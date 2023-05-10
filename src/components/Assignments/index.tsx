@@ -1,7 +1,13 @@
 import { Assignment } from "../Assignment";
 import styles from "./assignments.module.css";
+import { AssignmentType } from "../../types/assignmentType";
 
-export function Assignments() {
+interface Props {
+  assignments: AssignmentType[];
+  handleDelete: (id: number) => void;
+}
+
+export function Assignments({assignments, handleDelete}: Props) {
   return (
     <section className={styles.assignments}>
       <header className={styles.header}>
@@ -17,7 +23,13 @@ export function Assignments() {
       </header>
 
       <div className={styles.list}>
-        <Assignment />
+          {assignments.map((assignment) => (
+            <Assignment key={assignment.id}
+              id={assignment.id}
+              completed={assignment.completed}
+              handleDelete={handleDelete}
+            />
+          ))}
       </div>
     </section>
   );

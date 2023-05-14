@@ -5,20 +5,21 @@ import { AssignmentType } from "../../types/assignmentType";
 interface Props {
   assignments: AssignmentType[];
   handleDelete: (id: number) => void;
+  handleComplete: (id: number) => void;
 }
 
-export function Assignments({assignments, handleDelete}: Props) {
+export function Assignments({assignments, handleDelete, handleComplete}: Props) {
   return (
     <section className={styles.assignments}>
       <header className={styles.header}>
         <div>
           <p>Created Assignments</p>
-          <span>1</span>
+          <span>{assignments.length}</span>
         </div>
 
         <div>
           <p className={styles.textPurple}>Completed Assignments</p>
-          <span>1 of 1</span>
+          <span>{assignments.filter((assignment) => assignment.completed).length} of {assignments.length}</span>
         </div>
       </header>
 
@@ -26,8 +27,10 @@ export function Assignments({assignments, handleDelete}: Props) {
           {assignments.map((assignment) => (
             <Assignment key={assignment.id}
               id={assignment.id}
+              name={assignment.name}
               completed={assignment.completed}
               handleDelete={handleDelete}
+              handleComplete={handleComplete}
             />
           ))}
       </div>

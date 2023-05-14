@@ -5,10 +5,15 @@ import { useState } from "react";
 
 function App() {
   const [assignments, setAssignments] = useState<AssignmentType[]>(assignmentsArray);
-  console.log("Starting array: ", assignmentsArray);
+  const [newAssignmentName, setNewAssignmentName] = useState("");
+  // console.log("Starting array: ", assignmentsArray);
 
-  const handleAdd = () => {
-    const newAssignment = { id: assignments.length + 1, completed: false };
+  const handleAdd = (newName: string) => {
+    const newAssignment: AssignmentType = { 
+      id: assignments.length + 1, 
+      name: newName,
+      completed: false 
+    };
     setAssignments([...assignments, newAssignment]);
   };
 
@@ -16,16 +21,28 @@ function App() {
     const updatedAssignments = assignments.filter(
       (assignment) => assignment.id !== id
     );
-    console.log("Updated assignments: ", updatedAssignments);
+    // console.log("Updated assignments: ", updatedAssignments);
     setAssignments(updatedAssignments);
   };
 
+  const handleComplete = (id: number) => {
+    const updatedAssignments = assignments.map(
+      (assignment) => assignment.id === id ? { ...assignment, completed: !assignment.completed } : assignment)
+    console.log("Updated assignments: ", updatedAssignments);
+    setAssignments(updatedAssignments);
+  }
+
   return (
     <>
-      <Header />
+      <Header 
+        handleAdd={handleAdd}
+        newAssignmentName={newAssignmentName}
+        setNewAssignmentName={setNewAssignmentName}
+      />
       <Assignments
         assignments={assignments}
         handleDelete={handleDelete}
+        handleComplete={handleComplete}
       />
     </>
   );

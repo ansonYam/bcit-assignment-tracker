@@ -28,7 +28,7 @@ function App() {
   const handleComplete = (id: number) => {
     const updatedAssignments = assignments.map(
       (assignment) => assignment.id === id ? { ...assignment, completed: !assignment.completed } : assignment)
-    console.log("Updated assignments: ", updatedAssignments);
+    // console.log("Updated assignments: ", updatedAssignments);
     setAssignments(updatedAssignments);
   }
 

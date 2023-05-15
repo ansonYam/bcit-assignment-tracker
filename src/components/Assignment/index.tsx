@@ -25,7 +25,7 @@ export function Assignment({id, name, completed, handleDelete, handleComplete}: 
         {completed ? <BsFillCheckCircleFill size={20} /> : <div />}
       </button>
 
-      <p>{name}</p>
+      <p className={completed ? styles.textCompleted : ""}>{name}</p>
 
       <button className={styles.deleteButton} onClick={() => handleClick()}>
         <TbTrash size={20} />

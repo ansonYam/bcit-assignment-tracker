@@ -29,6 +29,7 @@ export function Assignments({assignments, handleDelete, handleComplete}: Props) 
               id={assignment.id}
               name={assignment.name}
               completed={assignment.completed}
+              due_date={assignment.due_date}
               handleDelete={handleDelete}
               handleComplete={handleComplete}
             />

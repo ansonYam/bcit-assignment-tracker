@@ -8,11 +8,12 @@ function App() {
   const [newAssignmentName, setNewAssignmentName] = useState("");
   // console.log("Starting array: ", assignmentsArray);
 
-  const handleAdd = (newName: string) => {
+  const handleAdd = (newName: string, dueDate: Date) => {
     const newAssignment: AssignmentType = { 
       id: assignments.length + 1, 
       name: newName,
-      completed: false 
+      completed: false,
+      due_date: dueDate, 
     };
     setAssignments([...assignments, newAssignment]);
   };

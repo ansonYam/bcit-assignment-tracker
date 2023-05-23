@@ -42,6 +42,18 @@ p.textCompleted {
   color: #5e60ce;
 }
 
+.dueDateBubble {
+  padding: 4px 8px;
+  background-color: grey;
+  border-radius: 10px;
+}
+
+.urgent {
+  padding: 4px 8px;
+  background-color: red;
+  border-radius: 10px;
+}
+
 .deleteButton {
   background: none;
   border: none;
